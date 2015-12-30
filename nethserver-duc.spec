@@ -11,7 +11,7 @@ Source0:    %{name}-%{version}.tar.gz
 BuildArch:  noarch
 
 Requires:   nethserver-base
-Requires:   duc
+Requires:   duc >= 1.3.3
 
 BuildRequires: perl
 BuildRequires: nethserver-devtools
