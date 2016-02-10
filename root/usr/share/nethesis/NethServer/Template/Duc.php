@@ -135,7 +135,6 @@ $widget = '<div id="main" class="">
 </div>
 <div id="updateInfo">
 '.$view->buttonList()->insert($view->button('Update', $view::BUTTON_SUBMIT)).
-$view->textLabel('date')->setAttribute('template', $T('Updated on ${0}'))->setAttribute('tag','div') .'
-</div>';
+'</div>';
 
 echo $widget;
