@@ -1,6 +1,6 @@
 Summary:    Analysis of space and usage of disk
 Name:       nethserver-duc
-Version: 1.1.0
+Version: 1.4.0
 Release: 1%{?dist}
 License:    GPL
 URL:        %{url_prefix}/%{name}
@@ -38,6 +38,9 @@ rm -rf %{buildroot}
 %dir /usr/share/duc
 
 %changelog
+* Fri Jul 08 2016 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.4.0-1
+- Bump release
+
 * Thu Jul 07 2016 Stefano Fancello <stefano.fancello@nethesis.it> - 1.1.0-1
 - First NS7 release
 
