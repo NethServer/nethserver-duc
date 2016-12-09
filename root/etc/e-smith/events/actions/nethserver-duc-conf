@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Handle duc upgrade from 1.0 to 1.4
+#
+
+if [ -f /var/cache/duc/duc.db ]; then
+    rm -f /var/cache/duc/duc.db
+fi
