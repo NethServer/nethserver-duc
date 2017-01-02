@@ -148,6 +148,8 @@ def xml2json(xmlstring, options, strip_ns=1, strip=1):
 
     """Convert an XML string into a JSON string."""
 
+    if options.encoding:
+	xmlstring = xmlstring.replace('encoding="UTF-8"',"encoding=\"%s\"" % options.encoding, 1)
     elem = ET.fromstring(xmlstring)
     return elem2json(elem, options, strip_ns=strip_ns, strip=strip)
 
@@ -160,6 +162,10 @@ def main():
     p.add_option(
         '--pretty', action="store_true",
         dest="pretty", help="Format JSON output so it is easier to read")
+    p.add_option(
+        '--encoding', type="string",
+        dest="encoding", help="Force provided encoding")
+
 
     options, arguments = p.parse_args()
 

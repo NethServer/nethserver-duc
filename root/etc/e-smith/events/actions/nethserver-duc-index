@@ -29,5 +29,11 @@ SIZE=10000000
 # parse db into xml
 /usr/bin/duc xml -s $SIZE -x -d $DUC_DB $INDEX_DIR > $JSON_DIR/tree.xml
 
-# convert in file json and strip lines
-/usr/share/duc/xml2json.py $JSON_DIR/tree.xml > $JSON_DIR/duc.json
+# find current encoding, then convert in file json and strip lines
+encoding=$(/usr/bin/file -b --mime-encoding $JSON_DIR/tree.xml)
+
+if [ $encoding == "iso-8859-1" ]; then
+    /usr/share/duc/xml2json.py --encoding iso-8859-1 $JSON_DIR/tree.xml > $JSON_DIR/duc.json
+else
+    /usr/share/duc/xml2json.py $JSON_DIR/tree.xml > $JSON_DIR/duc.json
+fi
