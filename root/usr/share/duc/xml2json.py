@@ -93,19 +93,19 @@ def recToDelete(elem, backupdirs):
     global size
 
     if(elem.attrib['name'] == backupdirs[-1]):
-        size = int(elem.attrib['size'])
+        size = int(elem.attrib['size_actual'])
     else:
         for obj in list(elem):
             if(obj.attrib['name'] == backupdirs[-1]):
-                size = int(obj.attrib['size'])
-                obj.attrib['size'] = str(int(obj.attrib['size']) - size)
-                if(int(obj.attrib['size']) < MIN_SIZE):
+                size = int(obj.attrib['size_actual'])
+                obj.attrib['size_actual'] = str(int(obj.attrib['size_actual']) - size)
+                if(int(obj.attrib['size_actual']) < MIN_SIZE):
                     elem.remove(obj)
             else:
                 size = recToDelete(obj, backupdirs)
                 if(obj.attrib['name'] in backupdirs):
-                    obj.attrib['size'] = str(int(obj.attrib['size']) - size)
-                    if(int(obj.attrib['size']) < MIN_SIZE):
+                    obj.attrib['size_actual'] = str(int(obj.attrib['size_actual']) - size)
+                    if(int(obj.attrib['size_actual']) < MIN_SIZE):
                         elem.remove(obj)
 
     return size
@@ -127,8 +127,8 @@ def elem2json(elem, options, strip_ns=1, strip=1):
         for child in elem:
             if(child.attrib['name'] == a[0]):
                 size = recToDelete(child, a)
-                child.attrib['size'] = str(int(child.attrib['size']) - size)
-                if(int(child.attrib['size']) < MIN_SIZE):
+                child.attrib['size_actual'] = str(int(child.attrib['size_actual']) - size)
+                if(int(child.attrib['size_actual']) < MIN_SIZE):
                     elem.remove(child)
 
     # remove fake folder
