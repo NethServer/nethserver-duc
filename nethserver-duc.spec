@@ -3,7 +3,7 @@
 
 Summary:    Analysis of space and usage of disk
 Name:       nethserver-duc
-Version: 1.0.5
+Version: 1.0.6
 Release: 1%{?dist}
 License:    GPL
 URL:        %{url_prefix}/%{name}
@@ -41,6 +41,9 @@ mv tmp-filelist %{name}-%{version}-filelist
 %defattr(-,root,root)
 
 %changelog
+* Tue Feb 14 2017 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.6-1
+- Disk usage: no graph showed - NethServer/dev#5214
+
 * Tue Jan 03 2017 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.5-1
 - Backport restore from old backups - Refs #3429
 
