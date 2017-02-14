@@ -1,6 +1,6 @@
 Summary:    Analysis of space and usage of disk
 Name:       nethserver-duc
-Version: 1.4.1
+Version: 1.4.2
 Release: 1%{?dist}
 License:    GPL
 URL:        %{url_prefix}/%{name}
@@ -38,6 +38,9 @@ rm -rf %{buildroot}
 %dir /usr/share/duc
 
 %changelog
+* Tue Feb 14 2017 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.4.2-1
+- Disk usage: no graph showed - NethServer/dev#5214
+
 * Tue Jan 03 2017 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.4.1-1
 - Update for duc 1.4 - Refs #3429
 
