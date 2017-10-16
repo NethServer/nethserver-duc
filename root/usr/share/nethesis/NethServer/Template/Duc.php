@@ -103,7 +103,7 @@ $view->includeJavascript("
         var cv;
         $('#chart').empty();
 
-        $.ajax('${modulePath}?get_json').done(function(data) {
+        $.ajax('${modulePath}.json?get_json').done(function(data) {
 
             if(data) {
                 if(!cv) {
