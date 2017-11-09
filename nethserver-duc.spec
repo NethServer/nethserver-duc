@@ -3,7 +3,7 @@
 
 Summary:    Analysis of space and usage of disk
 Name:       nethserver-duc
-Version: 1.0.6
+Version: 1.0.7
 Release: 1%{?dist}
 License:    GPL
 URL:        %{url_prefix}/%{name}
@@ -41,6 +41,9 @@ mv tmp-filelist %{name}-%{version}-filelist
 %defattr(-,root,root)
 
 %changelog
+* Thu Nov 09 2017 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.7-1
+- Avoid CSRF token rotation on ajax request - NethServer/dev#5359
+
 * Tue Feb 14 2017 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.6-1
 - Disk usage: no graph showed - NethServer/dev#5214
 
