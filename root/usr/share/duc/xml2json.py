@@ -42,28 +42,8 @@ import ast
 import xml.etree.cElementTree as ET
 
 MIN_SIZE = 10000000
-COMMAND = '/sbin/e-smith/config getprop backup-data Mount'
 size = None
 
-
-def splitall():
-    path = os.popen(COMMAND).read().strip()
-    allparts = []
-
-    if(path):
-        while 1:
-            parts = os.path.split(path)
-            if parts[0] == path:  # sentinel for absolute paths
-                allparts.insert(0, parts[0])
-                break
-            elif parts[1] == path: # sentinel for relative paths
-                allparts.insert(0, parts[1])
-                break
-            else:
-                path = parts[0]
-                allparts.insert(0, parts[1])
-
-    return allparts
 
 def elem_to_internal(elem, strip_ns=1, strip=1):
     """Convert an Element into an internal dictionary (not JSON!)."""
@@ -117,25 +97,12 @@ def elem2json(elem, options, strip_ns=1, strip=1):
     if hasattr(elem, 'getroot'):
         elem = elem.getroot()
 
-    a = splitall()
-    if a:
-        a = a[1:]
-        if(a[-1] == ""):
-            a = a[:-1]
-
-        # remove backup dir elem
-        for child in elem:
-            if(child.attrib['name'] == a[0]):
-                size = recToDelete(child, a)
-                child.attrib['size_actual'] = str(int(child.attrib['size_actual']) - size)
-                if(int(child.attrib['size_actual']) < MIN_SIZE):
-                    elem.remove(child)
-
     # remove fake folder
     for child in elem:
         if( child.attrib['name'] == 'dev' or
             child.attrib['name'] == 'proc' or
             child.attrib['name'] == 'sys' or
+            child.attrib['name'] == 'mnt' or
             child.attrib['name'] == 'selinux'):
             elem.remove(child)
 
