@@ -24,7 +24,7 @@ DUC_DB=$JSON_DIR/duc.db
 SIZE=10000000
 
 # directory indexing
-/usr/bin/duc index $INDEX_DIR -d $DUC_DB
+/usr/bin/duc index --check-hard-links $INDEX_DIR -d $DUC_DB
 
 # parse db into xml
 /usr/bin/duc xml -s $SIZE -x -d $DUC_DB $INDEX_DIR > $JSON_DIR/tree.xml
