@@ -1,6 +1,6 @@
 Summary:    Analysis of space and usage of disk
 Name:       nethserver-duc
-Version: 1.4.4
+Version: 1.4.5
 Release: 1%{?dist}
 License:    GPL
 URL:        %{url_prefix}/%{name}
@@ -38,6 +38,9 @@ rm -rf %{buildroot}
 %dir /usr/share/duc
 
 %changelog
+* Tue Sep 25 2018 Davide Principi <davide.principi@nethesis.it> - 1.4.5-1
+- Duc reports wrong disk-usage - Bug NethServer/dev#5582
+
 * Tue Aug 28 2018 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.4.4-1
 - Backup-data: multiple schedule and backends - NethServer/dev#5538
 
