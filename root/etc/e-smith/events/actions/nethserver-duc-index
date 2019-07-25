@@ -23,8 +23,17 @@ JSON_DIR='/var/cache/duc'
 DUC_DB=$JSON_DIR/duc.db
 SIZE=10000000
 
+# read OneFileSystem prop
+ofs_prop=$(/sbin/e-smith/config getprop duc OneFileSystem)
+
+if [ $ofs_prop == "enabled" ]; then
+	ofs="-x"
+else
+	ofs=""
+fi
+
 # directory indexing
-/usr/bin/duc index --check-hard-links $INDEX_DIR -d $DUC_DB
+/usr/bin/duc index $ofs --check-hard-links $INDEX_DIR -d $DUC_DB
 
 # parse db into xml
 /usr/bin/duc xml -s $SIZE -x -d $DUC_DB $INDEX_DIR > $JSON_DIR/tree.xml
