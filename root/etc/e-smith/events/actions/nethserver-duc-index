@@ -32,8 +32,14 @@ else
 	ofs=""
 fi
 
+# create backup list to exclude from indexing
+EXCLUDE_PATHS=""
+for b in $(db backups keys); do
+    EXCLUDE_PATHS="$EXCLUDE_PATHS --exclude=backup-${b}"
+done
+
 # directory indexing
-/usr/bin/duc index $ofs --check-hard-links $INDEX_DIR -d $DUC_DB
+/usr/bin/duc index $ofs --check-hard-links $INDEX_DIR -d $DUC_DB --fs-exclude=sysfs,proc,devtmpfs,tmpfs ${EXCLUDE_PATHS}
 
 # parse db into xml
 /usr/bin/duc xml -s $SIZE -x -d $DUC_DB $INDEX_DIR > $JSON_DIR/tree.xml
