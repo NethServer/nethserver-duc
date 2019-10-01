@@ -1,6 +1,6 @@
 Summary:    Analysis of space and usage of disk
 Name:       nethserver-duc
-Version: 1.6.0
+Version: 1.7.0
 Release: 1%{?dist}
 License:    GPL
 URL:        %{url_prefix}/%{name}
@@ -38,6 +38,9 @@ rm -rf %{buildroot}
 %dir /usr/share/duc
 
 %changelog
+* Tue Oct 01 2019 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.7.0-1
+- New NethServer 7.7.1908 defaults - NethServer/dev#5831
+
 * Thu Sep 05 2019 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.6.0-1
 - Exclude backups and virtual file systems while indexing (#8)
 
